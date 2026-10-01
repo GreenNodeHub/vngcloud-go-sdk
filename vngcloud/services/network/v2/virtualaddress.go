@@ -1,9 +1,9 @@
 package v2
 
 import (
-	lsclient "github.com/vngcloud/vngcloud-go-sdk/v2/vngcloud/client"
-	lsentity "github.com/vngcloud/vngcloud-go-sdk/v2/vngcloud/entity"
-	lserr "github.com/vngcloud/vngcloud-go-sdk/v2/vngcloud/sdk_error"
+	lsclient "github.com/GreenNodeHub/vngcloud-go-sdk/v2/vngcloud/client"
+	lsentity "github.com/GreenNodeHub/vngcloud-go-sdk/v2/vngcloud/entity"
+	lserr "github.com/GreenNodeHub/vngcloud-go-sdk/v2/vngcloud/sdk_error"
 )
 
 func (s *NetworkServiceV2) CreateVirtualAddressCrossProject(popts ICreateVirtualAddressCrossProjectRequest) (*lsentity.VirtualAddress, lserr.IError) {

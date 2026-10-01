@@ -5,8 +5,8 @@ import (
 	ltesting "testing"
 	ltime "time"
 
-	lsclient "github.com/vngcloud/vngcloud-go-sdk/v2/client"
-	lsopensearchV1 "github.com/vngcloud/vngcloud-go-sdk/v2/vngcloud/services/opensearch/v1"
+	lsclient "github.com/GreenNodeHub/vngcloud-go-sdk/v2/client"
+	lsopensearchV1 "github.com/GreenNodeHub/vngcloud-go-sdk/v2/vngcloud/services/opensearch/v1"
 )
 
 const envVdbOpenSearchEndpoint = "https://vdb.console.vngcloud.vn"

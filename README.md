@@ -1,6 +1,6 @@
 # VngCloud Go SDK
 
-[![Release VngCloud GoSDK project](https://github.com/vngcloud/vngcloud-go-sdk/actions/workflows/release_build.yml/badge.svg)](https://github.com/vngcloud/vngcloud-go-sdk/actions/workflows/release_build.yml)
+[![Release VngCloud GoSDK project](https://github.com/GreenNodeHub/vngcloud-go-sdk/actions/workflows/release_build.yml/badge.svg)](https://github.com/GreenNodeHub/vngcloud-go-sdk/actions/workflows/release_build.yml)
 
 <hr>
 
@@ -19,7 +19,7 @@
 # Usage
 - You can install the SDK by running the following command:
   ```bash
-  go get github.com/vngcloud/vngcloud-go-sdk
+  go get github.com/GreenNodeHub/vngcloud-go-sdk/v2
   ```
 
 - Now for example, imagine you want to list all available VngCloud load-balancer packages. You can implement this code in your Go Application:
@@ -30,8 +30,8 @@
     "fmt"
     lctx "context"
 
-    lsclient "github.com/vngcloud/vngcloud-go-sdk/v2/client"
-    lslbv2 "github.com/vngcloud/vngcloud-go-sdk/v2/vngcloud/services/loadbalancer/v2"
+    lsclient "github.com/GreenNodeHub/vngcloud-go-sdk/v2/client"
+    lslbv2 "github.com/GreenNodeHub/vngcloud-go-sdk/v2/vngcloud/services/loadbalancer/v2"
   )
 
   func main() {

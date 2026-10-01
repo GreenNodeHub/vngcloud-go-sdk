@@ -1,10 +1,10 @@
 package portal
 
 import (
-	lsentity "github.com/vngcloud/vngcloud-go-sdk/v2/vngcloud/entity"
-	lserr "github.com/vngcloud/vngcloud-go-sdk/v2/vngcloud/sdk_error"
-	lsportalV1 "github.com/vngcloud/vngcloud-go-sdk/v2/vngcloud/services/portal/v1"
-	lsportalV2 "github.com/vngcloud/vngcloud-go-sdk/v2/vngcloud/services/portal/v2"
+	lsentity "github.com/GreenNodeHub/vngcloud-go-sdk/v2/vngcloud/entity"
+	lserr "github.com/GreenNodeHub/vngcloud-go-sdk/v2/vngcloud/sdk_error"
+	lsportalV1 "github.com/GreenNodeHub/vngcloud-go-sdk/v2/vngcloud/services/portal/v1"
+	lsportalV2 "github.com/GreenNodeHub/vngcloud-go-sdk/v2/vngcloud/services/portal/v2"
 )
 
 type IPortalServiceV1 interface {

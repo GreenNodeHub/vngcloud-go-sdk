@@ -1,9 +1,9 @@
 package dns
 
 import (
-	lsclient "github.com/vngcloud/vngcloud-go-sdk/v2/vngcloud/client"
-	lsdnsSvcInternal "github.com/vngcloud/vngcloud-go-sdk/v2/vngcloud/services/dns/internal_system/v1"
-	lsdnsSvcV1 "github.com/vngcloud/vngcloud-go-sdk/v2/vngcloud/services/dns/v1"
+	lsclient "github.com/GreenNodeHub/vngcloud-go-sdk/v2/vngcloud/client"
+	lsdnsSvcInternal "github.com/GreenNodeHub/vngcloud-go-sdk/v2/vngcloud/services/dns/internal_system/v1"
+	lsdnsSvcV1 "github.com/GreenNodeHub/vngcloud-go-sdk/v2/vngcloud/services/dns/v1"
 )
 
 func NewVDnsServiceV1(psvcClient lsclient.IServiceClient) IVDnsServiceV1 {

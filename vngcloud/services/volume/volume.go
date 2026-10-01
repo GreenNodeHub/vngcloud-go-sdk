@@ -1,9 +1,9 @@
 package volume
 
 import (
-	lsclient "github.com/vngcloud/vngcloud-go-sdk/v2/vngcloud/client"
-	lsvolumeSvcV1 "github.com/vngcloud/vngcloud-go-sdk/v2/vngcloud/services/volume/v1"
-	lsvolumeSvcV2 "github.com/vngcloud/vngcloud-go-sdk/v2/vngcloud/services/volume/v2"
+	lsclient "github.com/GreenNodeHub/vngcloud-go-sdk/v2/vngcloud/client"
+	lsvolumeSvcV1 "github.com/GreenNodeHub/vngcloud-go-sdk/v2/vngcloud/services/volume/v1"
+	lsvolumeSvcV2 "github.com/GreenNodeHub/vngcloud-go-sdk/v2/vngcloud/services/volume/v2"
 )
 
 func NewVolumeServiceV2(psvcClient lsclient.IServiceClient) IVolumeServiceV2 {

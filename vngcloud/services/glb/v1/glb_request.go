@@ -4,8 +4,8 @@ import (
 	lfmt "fmt"
 	lstr "strings"
 
+	lscommon "github.com/GreenNodeHub/vngcloud-go-sdk/v2/vngcloud/services/common"
 	ljparser "github.com/cuongpiger/joat/parser"
-	lscommon "github.com/vngcloud/vngcloud-go-sdk/v2/vngcloud/services/common"
 )
 
 type (

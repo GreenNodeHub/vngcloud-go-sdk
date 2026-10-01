@@ -3,9 +3,9 @@ package test
 import (
 	ltesting "testing"
 
-	lserr "github.com/vngcloud/vngcloud-go-sdk/v2/vngcloud/sdk_error"
-	lsportalV1 "github.com/vngcloud/vngcloud-go-sdk/v2/vngcloud/services/portal/v1"
-	lsportalV2 "github.com/vngcloud/vngcloud-go-sdk/v2/vngcloud/services/portal/v2"
+	lserr "github.com/GreenNodeHub/vngcloud-go-sdk/v2/vngcloud/sdk_error"
+	lsportalV1 "github.com/GreenNodeHub/vngcloud-go-sdk/v2/vngcloud/services/portal/v1"
+	lsportalV2 "github.com/GreenNodeHub/vngcloud-go-sdk/v2/vngcloud/services/portal/v2"
 )
 
 func TestGetPortalInfoFailed(t *ltesting.T) {

@@ -1,9 +1,9 @@
 package portal
 
 import (
-	lsclient "github.com/vngcloud/vngcloud-go-sdk/v2/vngcloud/client"
-	lsportalSvcV1 "github.com/vngcloud/vngcloud-go-sdk/v2/vngcloud/services/portal/v1"
-	lsportalSvcV2 "github.com/vngcloud/vngcloud-go-sdk/v2/vngcloud/services/portal/v2"
+	lsclient "github.com/GreenNodeHub/vngcloud-go-sdk/v2/vngcloud/client"
+	lsportalSvcV1 "github.com/GreenNodeHub/vngcloud-go-sdk/v2/vngcloud/services/portal/v1"
+	lsportalSvcV2 "github.com/GreenNodeHub/vngcloud-go-sdk/v2/vngcloud/services/portal/v2"
 )
 
 func NewPortalServiceV1(psvcClient lsclient.IServiceClient) IPortalServiceV1 {

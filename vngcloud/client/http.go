@@ -10,7 +10,7 @@ import (
 	ljtime "github.com/cuongpiger/joat/timer"
 	lreq "github.com/imroc/req/v3"
 
-	lserr "github.com/vngcloud/vngcloud-go-sdk/v2/vngcloud/sdk_error"
+	lserr "github.com/GreenNodeHub/vngcloud-go-sdk/v2/vngcloud/sdk_error"
 )
 
 const (

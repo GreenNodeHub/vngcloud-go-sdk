@@ -1,9 +1,9 @@
 package network
 
 import (
-	lsclient "github.com/vngcloud/vngcloud-go-sdk/v2/vngcloud/client"
-	lsnetworkSvcV1 "github.com/vngcloud/vngcloud-go-sdk/v2/vngcloud/services/network/v1"
-	lsnetworkSvcV2 "github.com/vngcloud/vngcloud-go-sdk/v2/vngcloud/services/network/v2"
+	lsclient "github.com/GreenNodeHub/vngcloud-go-sdk/v2/vngcloud/client"
+	lsnetworkSvcV1 "github.com/GreenNodeHub/vngcloud-go-sdk/v2/vngcloud/services/network/v1"
+	lsnetworkSvcV2 "github.com/GreenNodeHub/vngcloud-go-sdk/v2/vngcloud/services/network/v2"
 )
 
 func NewNetworkServiceV2(psvcClient lsclient.IServiceClient) INetworkServiceV2 {

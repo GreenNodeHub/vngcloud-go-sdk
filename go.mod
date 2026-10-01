@@ -1,4 +1,4 @@
-module github.com/vngcloud/vngcloud-go-sdk/v2
+module github.com/GreenNodeHub/vngcloud-go-sdk/v2
 
 go 1.22.2
 

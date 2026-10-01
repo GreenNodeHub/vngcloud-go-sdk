@@ -3,8 +3,8 @@ package test
 import (
 	ltesting "testing"
 
-	lsentity "github.com/vngcloud/vngcloud-go-sdk/v2/vngcloud/entity"
-	v1 "github.com/vngcloud/vngcloud-go-sdk/v2/vngcloud/services/dns/v1"
+	lsentity "github.com/GreenNodeHub/vngcloud-go-sdk/v2/vngcloud/entity"
+	v1 "github.com/GreenNodeHub/vngcloud-go-sdk/v2/vngcloud/services/dns/v1"
 )
 
 func TestDnsServiceV1_GetHostedZoneById(t *ltesting.T) {

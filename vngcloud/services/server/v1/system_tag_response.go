@@ -1,6 +1,6 @@
 package v1
 
-import lsentity "github.com/vngcloud/vngcloud-go-sdk/v2/vngcloud/entity"
+import lsentity "github.com/GreenNodeHub/vngcloud-go-sdk/v2/vngcloud/entity"
 
 type SystemTagResponse struct {
 	Key       string `json:"key"`

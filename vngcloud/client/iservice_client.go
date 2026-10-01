@@ -3,7 +3,7 @@ package client
 import (
 	lreq "github.com/imroc/req/v3"
 
-	lsdkErr "github.com/vngcloud/vngcloud-go-sdk/v2/vngcloud/sdk_error"
+	lsdkErr "github.com/GreenNodeHub/vngcloud-go-sdk/v2/vngcloud/sdk_error"
 )
 
 type IServiceClient interface {

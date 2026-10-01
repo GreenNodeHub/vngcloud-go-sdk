@@ -10,8 +10,8 @@ import (
 	ltesting "testing"
 	ltime "time"
 
-	lsclient "github.com/vngcloud/vngcloud-go-sdk/v2/client"
-	lskafkaV1 "github.com/vngcloud/vngcloud-go-sdk/v2/vngcloud/services/kafka/v1"
+	lsclient "github.com/GreenNodeHub/vngcloud-go-sdk/v2/client"
+	lskafkaV1 "github.com/GreenNodeHub/vngcloud-go-sdk/v2/vngcloud/services/kafka/v1"
 )
 
 const (

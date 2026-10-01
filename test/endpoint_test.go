@@ -4,7 +4,7 @@ import (
 	"net/url"
 	ltesting "testing"
 
-	lsnwv1 "github.com/vngcloud/vngcloud-go-sdk/v2/vngcloud/services/network/v1"
+	lsnwv1 "github.com/GreenNodeHub/vngcloud-go-sdk/v2/vngcloud/services/network/v1"
 )
 
 func TestGetEndpointSuccess(t *ltesting.T) {

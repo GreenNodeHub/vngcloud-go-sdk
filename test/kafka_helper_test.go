@@ -6,8 +6,8 @@ import (
 	lstrings "strings"
 	ltesting "testing"
 
-	lsentity "github.com/vngcloud/vngcloud-go-sdk/v2/vngcloud/entity"
-	lskafkaV1 "github.com/vngcloud/vngcloud-go-sdk/v2/vngcloud/services/kafka/v1"
+	lsentity "github.com/GreenNodeHub/vngcloud-go-sdk/v2/vngcloud/entity"
+	lskafkaV1 "github.com/GreenNodeHub/vngcloud-go-sdk/v2/vngcloud/services/kafka/v1"
 )
 
 const (

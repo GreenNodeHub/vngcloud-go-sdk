@@ -3,7 +3,7 @@ package v2
 import (
 	lstrconv "strconv"
 
-	lsentity "github.com/vngcloud/vngcloud-go-sdk/v2/vngcloud/entity"
+	lsentity "github.com/GreenNodeHub/vngcloud-go-sdk/v2/vngcloud/entity"
 )
 
 const (

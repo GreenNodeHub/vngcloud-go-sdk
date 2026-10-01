@@ -3,7 +3,7 @@ package test
 import (
 	ltesting "testing"
 
-	lsdnsSvcPortal "github.com/vngcloud/vngcloud-go-sdk/v2/vngcloud/services/dns/internal_system/v1"
+	lsdnsSvcPortal "github.com/GreenNodeHub/vngcloud-go-sdk/v2/vngcloud/services/dns/internal_system/v1"
 )
 
 func TestDnsServiceInternal_ListHostedZonesDefault(t *ltesting.T) {

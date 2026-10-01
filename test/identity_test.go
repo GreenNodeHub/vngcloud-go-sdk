@@ -7,9 +7,9 @@ import (
 
 	lgodotenv "github.com/joho/godotenv"
 
-	lsclient "github.com/vngcloud/vngcloud-go-sdk/v2/client"
-	lserr "github.com/vngcloud/vngcloud-go-sdk/v2/vngcloud/sdk_error"
-	lsidentityV2 "github.com/vngcloud/vngcloud-go-sdk/v2/vngcloud/services/identity/v2"
+	lsclient "github.com/GreenNodeHub/vngcloud-go-sdk/v2/client"
+	lserr "github.com/GreenNodeHub/vngcloud-go-sdk/v2/vngcloud/sdk_error"
+	lsidentityV2 "github.com/GreenNodeHub/vngcloud-go-sdk/v2/vngcloud/services/identity/v2"
 )
 
 func getEnv() (string, string) {

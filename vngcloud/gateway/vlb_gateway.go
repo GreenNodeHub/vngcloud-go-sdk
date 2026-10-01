@@ -1,8 +1,8 @@
 package gateway
 
 import (
-	lsclient "github.com/vngcloud/vngcloud-go-sdk/v2/vngcloud/client"
-	lslbSvc "github.com/vngcloud/vngcloud-go-sdk/v2/vngcloud/services/loadbalancer"
+	lsclient "github.com/GreenNodeHub/vngcloud-go-sdk/v2/vngcloud/client"
+	lslbSvc "github.com/GreenNodeHub/vngcloud-go-sdk/v2/vngcloud/services/loadbalancer"
 )
 
 type vlbGatewayV2 struct {

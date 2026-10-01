@@ -1,6 +1,6 @@
 package v1
 
-import lsclient "github.com/vngcloud/vngcloud-go-sdk/v2/vngcloud/client"
+import lsclient "github.com/GreenNodeHub/vngcloud-go-sdk/v2/vngcloud/client"
 
 // URL layout under base = https://vdb.console.vngcloud.vn/vdb/open-search/v1
 //   /{projectId}/open-search           — list clusters
