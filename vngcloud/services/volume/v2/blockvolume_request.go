@@ -3,8 +3,8 @@ package v2
 import (
 	lfmt "fmt"
 
+	lscommon "github.com/GreenNodeHub/vngcloud-go-sdk/v2/vngcloud/services/common"
 	ljparser "github.com/cuongpiger/joat/parser"
-	lscommon "github.com/vngcloud/vngcloud-go-sdk/v2/vngcloud/services/common"
 )
 
 func NewCreateBlockVolumeRequest(pvolumeName, pvolumeType string, psize int64) ICreateBlockVolumeRequest {

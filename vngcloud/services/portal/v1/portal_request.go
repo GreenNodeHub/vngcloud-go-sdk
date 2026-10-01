@@ -1,6 +1,6 @@
 package v1
 
-import lscommon "github.com/vngcloud/vngcloud-go-sdk/v2/vngcloud/services/common"
+import lscommon "github.com/GreenNodeHub/vngcloud-go-sdk/v2/vngcloud/services/common"
 
 type GetPortalInfoRequest struct {
 	BackEndProjectId string

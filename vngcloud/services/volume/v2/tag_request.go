@@ -1,7 +1,7 @@
 package v2
 
 import (
-	lscommon "github.com/vngcloud/vngcloud-go-sdk/v2/vngcloud/services/common"
+	lscommon "github.com/GreenNodeHub/vngcloud-go-sdk/v2/vngcloud/services/common"
 )
 
 const (

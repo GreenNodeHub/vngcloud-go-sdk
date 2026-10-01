@@ -1,8 +1,8 @@
 package gateway
 
 import (
-	lsclient "github.com/vngcloud/vngcloud-go-sdk/v2/vngcloud/client"
-	lsopensearchSvc "github.com/vngcloud/vngcloud-go-sdk/v2/vngcloud/services/opensearch"
+	lsclient "github.com/GreenNodeHub/vngcloud-go-sdk/v2/vngcloud/client"
+	lsopensearchSvc "github.com/GreenNodeHub/vngcloud-go-sdk/v2/vngcloud/services/opensearch"
 )
 
 var _ IVDBOpenSearchGateway = &vdbOpenSearchGateway{}

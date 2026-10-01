@@ -1,8 +1,8 @@
 package gateway
 
 import (
-	lsclient "github.com/vngcloud/vngcloud-go-sdk/v2/vngcloud/client"
-	lskafkaSvc "github.com/vngcloud/vngcloud-go-sdk/v2/vngcloud/services/kafka"
+	lsclient "github.com/GreenNodeHub/vngcloud-go-sdk/v2/vngcloud/client"
+	lskafkaSvc "github.com/GreenNodeHub/vngcloud-go-sdk/v2/vngcloud/services/kafka"
 )
 
 var _ IVDBKafkaGateway = &vdbKafkaGateway{}

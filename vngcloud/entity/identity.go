@@ -1,7 +1,7 @@
 package entity
 
 import (
-	lsvcClient "github.com/vngcloud/vngcloud-go-sdk/v2/vngcloud/client"
+	lsvcClient "github.com/GreenNodeHub/vngcloud-go-sdk/v2/vngcloud/client"
 )
 
 type AccessToken struct {

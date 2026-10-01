@@ -3,7 +3,7 @@ package v2
 import (
 	ltime "time"
 
-	lsentity "github.com/vngcloud/vngcloud-go-sdk/v2/vngcloud/entity"
+	lsentity "github.com/GreenNodeHub/vngcloud-go-sdk/v2/vngcloud/entity"
 )
 
 type GetAccessTokenResponse struct {

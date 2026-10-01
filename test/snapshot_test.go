@@ -3,7 +3,7 @@ package test
 import (
 	ltesting "testing"
 
-	v2 "github.com/vngcloud/vngcloud-go-sdk/v2/vngcloud/services/volume/v2"
+	v2 "github.com/GreenNodeHub/vngcloud-go-sdk/v2/vngcloud/services/volume/v2"
 )
 
 func TestListSnapshotFailure(t *ltesting.T) {

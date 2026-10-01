@@ -3,7 +3,7 @@ package test
 import (
 	"testing"
 
-	v2 "github.com/vngcloud/vngcloud-go-sdk/v2/vngcloud/services/loadbalancer/v2"
+	v2 "github.com/GreenNodeHub/vngcloud-go-sdk/v2/vngcloud/services/loadbalancer/v2"
 )
 
 func TestListCertificates(t *testing.T) {

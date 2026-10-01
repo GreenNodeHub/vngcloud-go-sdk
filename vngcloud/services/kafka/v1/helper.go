@@ -10,7 +10,7 @@ import (
 	lregexp "regexp"
 	lstrings "strings"
 
-	lsentity "github.com/vngcloud/vngcloud-go-sdk/v2/vngcloud/entity"
+	lsentity "github.com/GreenNodeHub/vngcloud-go-sdk/v2/vngcloud/entity"
 )
 
 type AuthMode string

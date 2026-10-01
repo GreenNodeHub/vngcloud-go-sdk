@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this repo is
 
-`vngcloud-go-sdk` is a Go SDK for VNG Cloud services. Importers use module path `github.com/vngcloud/vngcloud-go-sdk/v2` (the `/v2` suffix is mandatory — Go modules major-version routing). Go 1.22+.
+`vngcloud-go-sdk` is a Go SDK for VNG Cloud services. Importers use module path `github.com/GreenNodeHub/vngcloud-go-sdk/v2` (the `/v2` suffix is mandatory — Go modules major-version routing). Go 1.22+.
 
 Consumers construct an `IClient` from `client/`, configure endpoints + IAM creds via `ISdkConfigure`, then call typed service methods through gateway accessors (e.g. `vngcloud.VLBGateway().V2().LoadBalancerService().CreateLoadBalancer(opt)`). The README shows the canonical usage shape.
 

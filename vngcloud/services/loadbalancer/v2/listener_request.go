@@ -3,8 +3,8 @@ package v2
 import (
 	lstr "strings"
 
-	"github.com/vngcloud/vngcloud-go-sdk/v2/vngcloud/entity"
-	lscommon "github.com/vngcloud/vngcloud-go-sdk/v2/vngcloud/services/common"
+	"github.com/GreenNodeHub/vngcloud-go-sdk/v2/vngcloud/entity"
+	lscommon "github.com/GreenNodeHub/vngcloud-go-sdk/v2/vngcloud/services/common"
 )
 
 const (

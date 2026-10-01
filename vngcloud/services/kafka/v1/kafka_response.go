@@ -1,7 +1,7 @@
 package v1
 
 import (
-	lsentity "github.com/vngcloud/vngcloud-go-sdk/v2/vngcloud/entity"
+	lsentity "github.com/GreenNodeHub/vngcloud-go-sdk/v2/vngcloud/entity"
 )
 
 // KafkaCluster response payload (wire format, matches vdb-api.json KafkaCluster schema).

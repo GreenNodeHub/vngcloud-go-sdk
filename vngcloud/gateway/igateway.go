@@ -1,17 +1,17 @@
 package gateway
 
 import (
-	lscomputeSvc "github.com/vngcloud/vngcloud-go-sdk/v2/vngcloud/services/compute"
-	lsdnsSvc "github.com/vngcloud/vngcloud-go-sdk/v2/vngcloud/services/dns"
-	"github.com/vngcloud/vngcloud-go-sdk/v2/vngcloud/services/glb"
-	lsidentitySvc "github.com/vngcloud/vngcloud-go-sdk/v2/vngcloud/services/identity"
-	lskafkaSvc "github.com/vngcloud/vngcloud-go-sdk/v2/vngcloud/services/kafka"
-	lslbSvc "github.com/vngcloud/vngcloud-go-sdk/v2/vngcloud/services/loadbalancer"
-	lsnetworkSvc "github.com/vngcloud/vngcloud-go-sdk/v2/vngcloud/services/network"
-	lsopensearchSvc "github.com/vngcloud/vngcloud-go-sdk/v2/vngcloud/services/opensearch"
-	lsportalSvc "github.com/vngcloud/vngcloud-go-sdk/v2/vngcloud/services/portal"
-	lsServerSvc "github.com/vngcloud/vngcloud-go-sdk/v2/vngcloud/services/server"
-	lsvolumeSvc "github.com/vngcloud/vngcloud-go-sdk/v2/vngcloud/services/volume"
+	lscomputeSvc "github.com/GreenNodeHub/vngcloud-go-sdk/v2/vngcloud/services/compute"
+	lsdnsSvc "github.com/GreenNodeHub/vngcloud-go-sdk/v2/vngcloud/services/dns"
+	"github.com/GreenNodeHub/vngcloud-go-sdk/v2/vngcloud/services/glb"
+	lsidentitySvc "github.com/GreenNodeHub/vngcloud-go-sdk/v2/vngcloud/services/identity"
+	lskafkaSvc "github.com/GreenNodeHub/vngcloud-go-sdk/v2/vngcloud/services/kafka"
+	lslbSvc "github.com/GreenNodeHub/vngcloud-go-sdk/v2/vngcloud/services/loadbalancer"
+	lsnetworkSvc "github.com/GreenNodeHub/vngcloud-go-sdk/v2/vngcloud/services/network"
+	lsopensearchSvc "github.com/GreenNodeHub/vngcloud-go-sdk/v2/vngcloud/services/opensearch"
+	lsportalSvc "github.com/GreenNodeHub/vngcloud-go-sdk/v2/vngcloud/services/portal"
+	lsServerSvc "github.com/GreenNodeHub/vngcloud-go-sdk/v2/vngcloud/services/server"
+	lsvolumeSvc "github.com/GreenNodeHub/vngcloud-go-sdk/v2/vngcloud/services/volume"
 )
 
 type IIamGateway interface {

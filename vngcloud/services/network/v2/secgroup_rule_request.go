@@ -1,6 +1,6 @@
 package v2
 
-import lscommon "github.com/vngcloud/vngcloud-go-sdk/v2/vngcloud/services/common"
+import lscommon "github.com/GreenNodeHub/vngcloud-go-sdk/v2/vngcloud/services/common"
 
 func NewCreateSecgroupRuleRequest(
 	pdirection SecgroupRuleDirection,

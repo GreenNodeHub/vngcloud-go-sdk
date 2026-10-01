@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"testing"
 
-	lserr "github.com/vngcloud/vngcloud-go-sdk/v2/vngcloud/sdk_error"
+	lserr "github.com/GreenNodeHub/vngcloud-go-sdk/v2/vngcloud/sdk_error"
 )
 
 func TestDeleteListener(t *testing.T) {

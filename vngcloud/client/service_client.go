@@ -4,9 +4,9 @@ import (
 	lstr "strings"
 	ltime "time"
 
+	lsdkErr "github.com/GreenNodeHub/vngcloud-go-sdk/v2/vngcloud/sdk_error"
 	ljutils "github.com/cuongpiger/joat/utils"
 	lreq "github.com/imroc/req/v3"
-	lsdkErr "github.com/vngcloud/vngcloud-go-sdk/v2/vngcloud/sdk_error"
 )
 
 type serviceClient struct {

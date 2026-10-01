@@ -1,8 +1,8 @@
 package server
 
 import (
-	lsclient "github.com/vngcloud/vngcloud-go-sdk/v2/vngcloud/client"
-	lsserverSvcV1 "github.com/vngcloud/vngcloud-go-sdk/v2/vngcloud/services/server/v1"
+	lsclient "github.com/GreenNodeHub/vngcloud-go-sdk/v2/vngcloud/client"
+	lsserverSvcV1 "github.com/GreenNodeHub/vngcloud-go-sdk/v2/vngcloud/services/server/v1"
 )
 
 func NewServerServiceInternalV1(psvcClient lsclient.IServiceClient) IServerServiceInternalV1 {

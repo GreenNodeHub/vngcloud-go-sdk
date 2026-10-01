@@ -3,7 +3,7 @@ package test
 import (
 	ltesting "testing"
 
-	lsnetworkSvcV2 "github.com/vngcloud/vngcloud-go-sdk/v2/vngcloud/services/network/v2"
+	lsnetworkSvcV2 "github.com/GreenNodeHub/vngcloud-go-sdk/v2/vngcloud/services/network/v2"
 )
 
 func TestCreateVirtualAddressCrossProject(t *ltesting.T) {

@@ -1,6 +1,6 @@
 package v1
 
-import lsclient "github.com/vngcloud/vngcloud-go-sdk/v2/vngcloud/client"
+import lsclient "github.com/GreenNodeHub/vngcloud-go-sdk/v2/vngcloud/client"
 
 func getEndpointByIdUrl(psc lsclient.IServiceClient, popts IGetEndpointByIdRequest) string {
 	return psc.ServiceURL(

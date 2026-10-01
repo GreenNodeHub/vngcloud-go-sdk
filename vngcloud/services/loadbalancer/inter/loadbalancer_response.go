@@ -1,6 +1,6 @@
 package inter
 
-import lsentity "github.com/vngcloud/vngcloud-go-sdk/v2/vngcloud/entity"
+import lsentity "github.com/GreenNodeHub/vngcloud-go-sdk/v2/vngcloud/entity"
 
 type CreateLoadBalancerResponse struct {
 	UUID string `json:"uuid"`
