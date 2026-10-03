@@ -15,6 +15,14 @@ func getServerByIdUrl(psc lsclient.IServiceClient, popts IGetServerByIdRequest) 
 		popts.GetServerId())
 }
 
+func getServerConsoleLogUrl(psc lsclient.IServiceClient, popts IGetServerConsoleLogRequest) string {
+	return psc.ServiceURL(
+		psc.GetProjectId(),
+		"servers",
+		popts.GetServerId(),
+		"console-log")
+}
+
 func deleteServerByIdUrl(psc lsclient.IServiceClient, popts IDeleteServerByIdRequest) string {
 	return psc.ServiceURL(
 		psc.GetProjectId(),

@@ -99,6 +99,12 @@ type ListServers struct {
 	Items []*Server
 }
 
+// ServerConsoleLog is the serial console output of a server, verbatim
+// (it may contain ANSI escape sequences).
+type ServerConsoleLog struct {
+	Content string
+}
+
 func (s *Server) CanDelete() bool {
 	switch lstr.ToUpper(s.Status) {
 	case ServerStatusActive, ServerStatusError, ServerStatusStopped:

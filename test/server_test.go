@@ -3,6 +3,7 @@ package test
 import (
 	ltesting "testing"
 
+	lserr "github.com/GreenNodeHub/vngcloud-go-sdk/v2/vngcloud/sdk_error"
 	lsserverSvcV1 "github.com/GreenNodeHub/vngcloud-go-sdk/v2/vngcloud/services/server/v1"
 
 	lscomputeSvcV2 "github.com/GreenNodeHub/vngcloud-go-sdk/v2/vngcloud/services/compute/v2"
@@ -84,6 +85,42 @@ func TestGetServerByIdSuccess(t *ltesting.T) {
 	}
 
 	t.Log("Result: ", server)
+	t.Log("PASS")
+}
+
+func TestGetServerConsoleLogFailure(t *ltesting.T) {
+	vngcloud := validSdkConfig()
+	opt := lscomputeSvcV2.NewGetServerConsoleLogRequest("ins-00000000-0000-0000-0000-000000000000")
+	consoleLog, sdkerr := vngcloud.VServerGateway().V2().ComputeService().GetServerConsoleLog(opt)
+	if sdkerr == nil {
+		t.Fatalf("Expect error but got nil")
+	}
+
+	if !sdkerr.IsError(lserr.EcVServerServerNotFound) {
+		t.Fatalf("Expect %s but got %v", lserr.EcVServerServerNotFound, sdkerr)
+	}
+
+	if consoleLog != nil {
+		t.Fatalf("Expect nil but got %v", consoleLog)
+	}
+
+	t.Log("Result: ", sdkerr)
+	t.Log("PASS")
+}
+
+func TestGetServerConsoleLogSuccess(t *ltesting.T) {
+	vngcloud := validSdkConfig()
+	opt := lscomputeSvcV2.NewGetServerConsoleLogRequest(getValueOfEnv("SERVER_ID"))
+	consoleLog, sdkerr := vngcloud.VServerGateway().V2().ComputeService().GetServerConsoleLog(opt)
+	if sdkerr != nil {
+		t.Fatalf("Expect nil but got %v", sdkerr)
+	}
+
+	if consoleLog == nil || consoleLog.Content == "" {
+		t.Fatalf("Expect non-empty console log but got %v", consoleLog)
+	}
+
+	t.Log("Result: ", len(consoleLog.Content), "bytes")
 	t.Log("PASS")
 }
 

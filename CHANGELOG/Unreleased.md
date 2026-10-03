@@ -11,6 +11,7 @@ _NONE_
 
 ## :sparkles: New Features
 - `loadbalancer/v2`: listener requests and responses carry the ACL `blockedCidrs` and `defaultAction` fields.
+- `compute/v2`: `GetServerConsoleLog` returns a server's serial console output (`GET /v2/{projectId}/servers/{serverId}/console-log`).
 
 ## :hammer: Others
 - Move the Go module path to `github.com/GreenNodeHub/vngcloud-go-sdk/v2`.

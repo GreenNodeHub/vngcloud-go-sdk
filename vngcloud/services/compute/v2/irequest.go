@@ -28,6 +28,13 @@ type IGetServerByIdRequest interface {
 	ToMap() map[string]interface{}
 }
 
+type IGetServerConsoleLogRequest interface {
+	GetServerId() string
+	AddUserAgent(pagent ...string) IGetServerConsoleLogRequest
+	ParseUserAgent() string
+	ToMap() map[string]interface{}
+}
+
 type IDeleteServerByIdRequest interface {
 	GetServerId() string
 	WithDeleteAllVolume(pok bool) IDeleteServerByIdRequest

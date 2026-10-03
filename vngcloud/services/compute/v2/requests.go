@@ -16,6 +16,12 @@ func NewGetServerByIdRequest(pserverId string) IGetServerByIdRequest {
 	return opt
 }
 
+func NewGetServerConsoleLogRequest(pserverId string) IGetServerConsoleLogRequest {
+	opt := new(GetServerConsoleLogRequest)
+	opt.ServerId = pserverId
+	return opt
+}
+
 func NewDeleteServerByIdRequest(pserverId string) IDeleteServerByIdRequest {
 	opt := new(DeleteServerByIdRequest)
 	opt.ServerId = pserverId
