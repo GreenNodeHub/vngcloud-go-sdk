@@ -63,6 +63,27 @@ func (s *ComputeServiceV2) GetServerById(popts IGetServerByIdRequest) (*lsentity
 	return resp.ToEntityServer(), nil
 }
 
+func (s *ComputeServiceV2) GetServerConsoleLog(popts IGetServerConsoleLogRequest) (*lsentity.ServerConsoleLog, lserr.IError) {
+	url := getServerConsoleLogUrl(s.VServerClient, popts)
+	resp := new(GetServerConsoleLogResponse)
+	errResp := lserr.NewErrorResponse(lserr.NormalErrorType)
+	req := lsclient.NewRequest().
+		WithHeader("User-Agent", popts.ParseUserAgent()).
+		WithOkCodes(200).
+		WithJsonResponse(resp).
+		WithJsonError(errResp)
+
+	if _, sdkErr := s.VServerClient.Get(url, req); sdkErr != nil {
+		return nil, lserr.SdkErrorHandler(sdkErr, errResp,
+			lserr.WithErrorServerNotFound(errResp)).
+			WithParameters(popts.ToMap()).
+			WithKVparameters("projectId", s.getProjectId()).
+			AppendCategories(lserr.ErrCatVServer)
+	}
+
+	return resp.ToEntityServerConsoleLog(), nil
+}
+
 func (s *ComputeServiceV2) DeleteServerById(popts IDeleteServerByIdRequest) lserr.IError {
 	url := deleteServerByIdUrl(s.VServerClient, popts)
 	errResp := lserr.NewErrorResponse(lserr.NormalErrorType)

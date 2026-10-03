@@ -222,6 +222,22 @@ func (s *GetServerByIdRequest) ToMap() map[string]interface{} {
 	}
 }
 
+type GetServerConsoleLogRequest struct {
+	lscommon.ServerCommon
+	lscommon.UserAgent
+}
+
+func (s *GetServerConsoleLogRequest) AddUserAgent(pagent ...string) IGetServerConsoleLogRequest {
+	s.UserAgent.AddUserAgent(pagent...)
+	return s
+}
+
+func (s *GetServerConsoleLogRequest) ToMap() map[string]interface{} {
+	return map[string]interface{}{
+		"serverId": s.ServerId,
+	}
+}
+
 type DeleteServerByIdRequest struct {
 	DeleteAllVolume bool `json:"deleteAllVolume"`
 	lscommon.ServerCommon

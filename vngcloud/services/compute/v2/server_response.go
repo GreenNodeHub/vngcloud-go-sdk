@@ -249,6 +249,16 @@ func (s *GetServerByIdResponse) ToEntityServer() *lsentity.Server {
 	return s.Data.toEntityServer()
 }
 
+type GetServerConsoleLogResponse struct {
+	Data string `json:"data"`
+}
+
+func (s *GetServerConsoleLogResponse) ToEntityServerConsoleLog() *lsentity.ServerConsoleLog {
+	return &lsentity.ServerConsoleLog{
+		Content: s.Data,
+	}
+}
+
 type UpdateServerSecgroupsByServerIdResponse struct {
 	Data Server `json:"data"`
 }

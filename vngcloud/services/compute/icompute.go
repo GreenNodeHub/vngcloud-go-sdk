@@ -9,6 +9,7 @@ import (
 type IComputeServiceV2 interface {
 	CreateServer(popts lscomputeSvcV2.ICreateServerRequest) (*lsentity.Server, lserr.IError)
 	GetServerById(popts lscomputeSvcV2.IGetServerByIdRequest) (*lsentity.Server, lserr.IError)
+	GetServerConsoleLog(popts lscomputeSvcV2.IGetServerConsoleLogRequest) (*lsentity.ServerConsoleLog, lserr.IError)
 	DeleteServerById(popts lscomputeSvcV2.IDeleteServerByIdRequest) lserr.IError
 	UpdateServerSecgroupsByServerId(popts lscomputeSvcV2.IUpdateServerSecgroupsByServerIdRequest) (*lsentity.Server, lserr.IError)
 	AttachBlockVolume(popts lscomputeSvcV2.IAttachBlockVolumeRequest) lserr.IError
