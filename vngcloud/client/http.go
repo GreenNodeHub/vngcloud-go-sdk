@@ -211,7 +211,7 @@ func (s *httpClient) DoRequest(purl string, preq IRequest) (*lreq.Response, lser
 		case lhttp.StatusTooManyRequests:
 			return nil, lserr.SdkErrorHandler(
 				defaultErrorResponse(resp.Err, purl, preq, resp), nil,
-				lserr.WithErrorPermissionDenied())
+				lserr.WithErrorTooManyRequests())
 		case lhttp.StatusInternalServerError:
 			return nil, lserr.SdkErrorHandler(
 				defaultErrorResponse(resp.Err, purl, preq, resp), nil,

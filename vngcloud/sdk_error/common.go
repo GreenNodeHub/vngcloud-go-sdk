@@ -215,3 +215,16 @@ func WithErrorProjectConflict(perrResp IErrorRespone) func(sdkError IError) {
 		}
 	}
 }
+
+// WithErrorTooManyRequests marks HTTP 429. It is deliberately separate from
+// WithErrorPermissionDenied: a throttle passes, an authorisation failure does not, and a caller
+// that cannot tell them apart backs off for the wrong reason or not at all. The text avoids the
+// words a consumer uses to recognise a missing resource ("not found", "404", "does not exist"),
+// because some of them fall through to matching on the message.
+func WithErrorTooManyRequests() func(IError) {
+	return func(sdkErr IError) {
+		sdkErr.WithErrorCode(EcTooManyRequests).
+			WithMessage("Too Many Requests").
+			WithErrors(lfmt.Errorf("rate limited by external service, too many requests"))
+	}
+}
