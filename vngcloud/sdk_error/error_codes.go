@@ -5,11 +5,15 @@ package sdk_error
 const (
 	EcUnknownError = ErrorCode("UnknownError")
 
-	EcInternalServerError   = ErrorCode("VngCloudApiInternalServerError")
-	EcServiceMaintenance    = ErrorCode("VngCloudServiceMaintenance")
-	EcPagingInvalid         = ErrorCode("VngCloudApiPagingInvalid")
-	EcTagKeyInvalid         = ErrorCode("VngCloudApiTagKeyInvalid")
-	EcPermissionDenied      = ErrorCode("VngCloudApiPermissionDenied")
+	EcInternalServerError = ErrorCode("VngCloudApiInternalServerError")
+	EcServiceMaintenance  = ErrorCode("VngCloudServiceMaintenance")
+	EcPagingInvalid       = ErrorCode("VngCloudApiPagingInvalid")
+	EcTagKeyInvalid       = ErrorCode("VngCloudApiTagKeyInvalid")
+	EcPermissionDenied    = ErrorCode("VngCloudApiPermissionDenied")
+	// EcTooManyRequests is HTTP 429. It used to share EcPermissionDenied with HTTP 403,
+	// which left a consumer unable to tell a throttle from a real authorisation failure
+	// without digging the raw status code out of the parameters.
+	EcTooManyRequests       = ErrorCode("VngCloudApiTooManyRequests")
 	EcUnexpectedError       = ErrorCode("VngCloudApiUnexpectedError")
 	EcPaymentMethodNotAllow = ErrorCode("VngCloudPaymentMethodNotAllow")
 	EcCreditNotEnough       = ErrorCode("VngCloudCredtNotEnough")
