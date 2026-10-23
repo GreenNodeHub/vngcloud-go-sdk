@@ -153,6 +153,26 @@ func (s *httpClient) WithReauthFunc(pauthOpt AuthOpts, preauthFunc func() (ISdkA
 }
 
 func (s *httpClient) DoRequest(purl string, preq IRequest) (*lreq.Response, lserr.IError) {
+	return s.doRequest(purl, preq, false)
+}
+
+// doRequest sends preq and reauthenticates at most once per DoRequest call; preauthenticated
+// records that it already has. Both reauth paths used to call DoRequest again without a bound, so
+// an endpoint that rejected every token - or IAM issuing tokens that NeedReauth already considers
+// stale - meant one IAM token request per round, forever, on a stack that only grew.
+func (s *httpClient) doRequest(purl string, preq IRequest, preauthenticated bool) (*lreq.Response, lserr.IError) {
+	if !preauthenticated && s.needReauth(preq) {
+		if s.reauthFunc == nil {
+			return nil, lserr.ErrorHandler(nil, lserr.WithErrorUnexpected(nil))
+		}
+
+		if sdkErr := s.reauthenticate(); sdkErr != nil {
+			return nil, sdkErr
+		}
+
+		preauthenticated = true
+	}
+
 	req := s.client.R().SetContext(s.context).SetHeaders(s.getDefaultHeaders()).SetHeaders(preq.GetMoreHeaders())
 	if opt := preq.GetRequestBody(); opt != nil {
 		req.SetBodyJsonMarshal(opt)
@@ -166,48 +186,46 @@ func (s *httpClient) DoRequest(purl string, preq IRequest) (*lreq.Response, lser
 		req.SetErrorResult(opt)
 	}
 
-	var resp *lreq.Response
-	if !s.needReauth(preq) {
-		var err error
+	var (
+		resp *lreq.Response
+		err  error
+	)
 
-		switch lstr.ToUpper(preq.GetRequestMethod()) {
-		case "POST":
-			resp, err = req.Post(purl)
-		case "GET":
-			resp, err = req.Get(purl)
-		case "DELETE":
-			resp, err = req.Delete(purl)
-		case "PUT":
-			resp, err = req.Put(purl)
-		case "PATCH":
-			resp, err = req.Patch(purl)
-		}
+	switch lstr.ToUpper(preq.GetRequestMethod()) {
+	case "POST":
+		resp, err = req.Post(purl)
+	case "GET":
+		resp, err = req.Get(purl)
+	case "DELETE":
+		resp, err = req.Delete(purl)
+	case "PUT":
+		resp, err = req.Put(purl)
+	case "PATCH":
+		resp, err = req.Patch(purl)
+	}
 
-		if err != nil && resp == nil {
-			return resp, lserr.ErrorHandler(err)
-		}
-	} else {
-		if !preq.SkipAuthentication() && s.reauthFunc != nil {
-			if sdkErr := s.reauthenticate(); sdkErr != nil {
-				return nil, sdkErr
-			}
-
-			return s.DoRequest(purl, preq)
-		}
+	if err != nil && resp == nil {
+		return resp, lserr.ErrorHandler(err)
 	}
 
 	if resp != nil && resp.Response != nil {
 		switch resp.StatusCode {
 		case lhttp.StatusUnauthorized:
-			if !preq.SkipAuthentication() && s.reauthFunc != nil {
-				if sdkErr := s.reauthenticate(); sdkErr != nil {
-					return nil, sdkErr
-				}
-
-				return s.DoRequest(purl, preq)
-			} else {
+			if preq.SkipAuthentication() || s.reauthFunc == nil {
 				return nil, defaultErrorResponse(resp.Err, purl, preq, resp)
 			}
+
+			if preauthenticated {
+				return nil, lserr.SdkErrorHandler(
+					defaultErrorResponse(resp.Err, purl, preq, resp), nil,
+					lserr.WithErrorUnauthorized())
+			}
+
+			if sdkErr := s.reauthenticate(); sdkErr != nil {
+				return nil, sdkErr
+			}
+
+			return s.doRequest(purl, preq, true)
 		case lhttp.StatusTooManyRequests:
 			return nil, lserr.SdkErrorHandler(
 				defaultErrorResponse(resp.Err, purl, preq, resp), nil,

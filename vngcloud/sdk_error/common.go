@@ -228,3 +228,15 @@ func WithErrorTooManyRequests() func(IError) {
 			WithErrors(lfmt.Errorf("rate limited by external service, too many requests"))
 	}
 }
+
+// WithErrorUnauthorized marks HTTP 401 that came back even though the request carried a token the
+// SDK had just fetched. Reauthenticating again would only send IAM another token request for the
+// same answer, which is how a single rejected endpoint used to turn into an unbounded stream of
+// token requests.
+func WithErrorUnauthorized() func(IError) {
+	return func(sdkErr IError) {
+		sdkErr.WithErrorCode(EcUnauthorized).
+			WithMessage("Unauthorized").
+			WithErrors(lfmt.Errorf("unauthorized by external service even with a freshly issued token"))
+	}
+}
