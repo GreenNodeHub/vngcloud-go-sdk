@@ -13,7 +13,10 @@ const (
 	// EcTooManyRequests is HTTP 429. It used to share EcPermissionDenied with HTTP 403,
 	// which left a consumer unable to tell a throttle from a real authorisation failure
 	// without digging the raw status code out of the parameters.
-	EcTooManyRequests       = ErrorCode("VngCloudApiTooManyRequests")
+	EcTooManyRequests = ErrorCode("VngCloudApiTooManyRequests")
+	// EcUnauthorized is HTTP 401 that persisted after the SDK fetched a fresh token. The token is
+	// not the problem at that point, so asking IAM for another one cannot help.
+	EcUnauthorized          = ErrorCode("VngCloudApiUnauthorized")
 	EcUnexpectedError       = ErrorCode("VngCloudApiUnexpectedError")
 	EcPaymentMethodNotAllow = ErrorCode("VngCloudPaymentMethodNotAllow")
 	EcCreditNotEnough       = ErrorCode("VngCloudCredtNotEnough")
