@@ -152,7 +152,8 @@ func TestShortLivedTokenDoesNotLoopBeforeSending(t *ltesting.T) {
 
 // The incident behind this test: the GLB endpoint answered 301 to another host, Go dropped the
 // Authorization header on the cross-host hop, and the target answered 401. No token can fix that,
-// so the client must stop after one reauthentication.
+// so the client must not ask IAM for one, and the error has to say where the request ended up -
+// the original incident took hours to diagnose because nothing pointed at the redirect.
 func TestCrossHostRedirectThatDropsAuthorizationIsBounded(t *ltesting.T) {
 	var targetHits latomic.Int32
 	target := lhttptest.NewServer(lhttp.HandlerFunc(func(w lhttp.ResponseWriter, r *lhttp.Request) {
@@ -176,13 +177,51 @@ func TestCrossHostRedirectThatDropsAuthorizationIsBounded(t *ltesting.T) {
 	iam := &fakeIam{lifetime: ltime.Hour}
 	_, sdkErr := withValidToken(newReauthClient(iam)).DoRequest(origin.URL+"/v1/items", getRequest())
 
-	if got := iam.calls.Load(); got != 1 {
-		t.Fatalf("token requests = %d, want exactly 1", got)
+	if got := iam.calls.Load(); got != 0 {
+		t.Fatalf("token requests = %d, want 0: a new token cannot survive the redirect either", got)
 	}
-	if got := targetHits.Load(); got != 2 {
-		t.Fatalf("requests reaching the redirect target = %d, want 2", got)
+	if got := targetHits.Load(); got != 1 {
+		t.Fatalf("requests reaching the redirect target = %d, want 1", got)
 	}
 	assertUnauthorized(t, sdkErr)
+
+	wantTarget := targetURL + "/v1/items"
+	if got, _ := sdkErr.GetParameters()["redirectedTo"].(string); got != wantTarget {
+		t.Fatalf("redirectedTo parameter = %q, want %q", got, wantTarget)
+	}
+	if msg := sdkErr.GetError().Error(); !lstr.Contains(msg, wantTarget) || !lstr.Contains(msg, "Authorization") {
+		t.Fatalf("error does not point at the redirect: %q", msg)
+	}
+}
+
+// A same-host redirect keeps the Authorization header, so a 401 behind it is an ordinary stale
+// token and still gets its one reauthentication.
+func TestSameHostRedirectStillReauthenticates(t *ltesting.T) {
+	var hits latomic.Int32
+	srv := lhttptest.NewServer(lhttp.HandlerFunc(func(w lhttp.ResponseWriter, r *lhttp.Request) {
+		if r.URL.Path == "/old" {
+			lhttp.Redirect(w, r, "/new", lhttp.StatusMovedPermanently)
+			return
+		}
+		hits.Add(1)
+		if r.Header.Get("Authorization") == "Bearer token-initial" {
+			w.WriteHeader(lhttp.StatusUnauthorized)
+			return
+		}
+		w.WriteHeader(lhttp.StatusOK)
+	}))
+	defer srv.Close()
+
+	iam := &fakeIam{lifetime: ltime.Hour}
+	if _, sdkErr := withValidToken(newReauthClient(iam)).DoRequest(srv.URL+"/old", getRequest()); sdkErr != nil {
+		t.Fatalf("request failed after reauthentication: %v", sdkErr.GetError())
+	}
+	if got := iam.calls.Load(); got != 1 {
+		t.Fatalf("token requests = %d, want 1", got)
+	}
+	if got := hits.Load(); got != 2 {
+		t.Fatalf("requests reaching /new = %d, want 2", got)
+	}
 }
 
 func assertUnauthorized(t *ltesting.T, psdkErr lserr.IError) {

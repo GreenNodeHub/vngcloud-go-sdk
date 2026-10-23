@@ -2,7 +2,9 @@ package client
 
 import (
 	lctx "context"
+	lfmt "fmt"
 	lhttp "net/http"
+	lurl "net/url"
 	lstr "strings"
 	lsync "sync"
 	ltime "time"
@@ -215,10 +217,19 @@ func (s *httpClient) doRequest(purl string, preq IRequest, preauthenticated bool
 				return nil, defaultErrorResponse(resp.Err, purl, preq, resp)
 			}
 
-			if preauthenticated {
-				return nil, lserr.SdkErrorHandler(
+			// A redirect to another host loses the Authorization header, so the server that
+			// answered 401 never saw a token and a fresh one cannot change its answer.
+			redirectedTo := crossHostRedirect(purl, resp)
+			if preauthenticated || redirectedTo != "" {
+				sdkErr := lserr.SdkErrorHandler(
 					defaultErrorResponse(resp.Err, purl, preq, resp), nil,
 					lserr.WithErrorUnauthorized())
+				if redirectedTo != "" {
+					sdkErr.WithKVparameters("redirectedTo", redirectedTo).
+						WithErrors(lfmt.Errorf("unauthorized after a redirect from %s to %s, "+
+							"which drops the Authorization header; point the endpoint at the target host", purl, redirectedTo))
+				}
+				return nil, sdkErr
 			}
 
 			if sdkErr := s.reauthenticate(); sdkErr != nil {
@@ -255,6 +266,26 @@ func (s *httpClient) doRequest(purl string, preq IRequest, preauthenticated bool
 	}
 
 	return nil, lserr.ErrorHandler(nil, lserr.WithErrorUnexpected(resp))
+}
+
+// crossHostRedirect returns the URL a request ended at when redirects took it to a host other than
+// the one in purl, and "" otherwise. Go does not forward Authorization across such a hop.
+func crossHostRedirect(purl string, presp *lreq.Response) string {
+	if presp == nil || presp.Response == nil || presp.Response.Request == nil || presp.Response.Request.URL == nil {
+		return ""
+	}
+
+	initial, err := lurl.Parse(purl)
+	if err != nil {
+		return ""
+	}
+
+	final := presp.Response.Request.URL
+	if lstr.EqualFold(final.Hostname(), initial.Hostname()) {
+		return ""
+	}
+
+	return final.String()
 }
 
 func (s *httpClient) needReauth(preq IRequest) bool {
